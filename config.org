@@ -1,0 +1,29 @@
+#+TITLE: EMACS CONFIG
+#+AUTHOR: Joey Wu
+#+DESCRIPTION: These are my reworked Emacs dots.
+#+STARTUP: showeverything
+#+OPTIONS: toc:2
+
+* STUFF
+
+** PACKAGE.EL
+#+begin_src emacs-lisp
+  (require 'package)
+(add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+
+;; Initialize package system
+(package-initialize)
+#+end_src
+
+** WHICH-KEY
+#+begin_src emacs-lisp
+  (which-key-mode 1)
+#+end_src
+
+** EVIL MODE
+This is absolutely necessary (for me).
+#+begin_src emacs-lisp
+  (use-package evil :vc (:url "https://github.com/emacs-evil/evil" :branch "main" :rev :newest) :ensure t :init (setq evil-want-key nil) (setq evil-vsplit-window-right t) (setq evil-vsplit-window-left t) :config (evil-mode 1))
+#+end_src
+
