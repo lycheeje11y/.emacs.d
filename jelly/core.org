@@ -14,7 +14,8 @@
   (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
   (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
-  ;; Initialize package system
+  ;; force manual package initialization just in case
+(setq warning-suppress-log-types '((package reinitialization)))
   (package-initialize)
 #+end_src
 
@@ -25,6 +26,19 @@
   (use-package which-key :config (which-key-mode 1))
 #+end_src
 
+** SENSIBLE DEFAULTS
+#+begin_src emacs-lisp
+          ;; there's a weird warning I don't want to see
+          (setq byte-compile-warnings '(not free-vars unresolved noruntime cl-functions obsolete))
+
+          (use-package sensible-defaults :vc (:url "https://github.com/hrs/sensible-defaults.el" :rev :newest :branch "main")
+            :ensure t
+            :config
+            (require 'sensible-defaults)
+  	  (sensible-defaults/use-all-settings))
+
+          ;; SENSIBLE DEFAULTS KEYBINDINGS ARE USED IN BINDS.ORG
+#+end_src
 
 ** EVIL MODE
 This is absolutely necessary (for me).
