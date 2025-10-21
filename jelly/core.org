@@ -8,15 +8,16 @@
 
 ** PACKAGE.EL
 #+begin_src emacs-lisp
-  (require 'package)
+    (require 'package)
 
-  ;; Add repositories
-  (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
-  (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+    ;; Add repositories
+    (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/"))
+    (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
 
-  ;; force manual package initialization just in case
-(setq warning-suppress-log-types '((package reinitialization)))
-  (package-initialize)
+
+    ;; force manual package initialization just in case
+  (setq warning-suppress-log-types '((package reinitialization)))
+    (package-initialize)
 #+end_src
 
 
@@ -84,9 +85,32 @@ This is absolutely necessary (for me).
 
 *** Window + Display Tweaks
 #+begin_src emacs-lisp
-  ;; add line numbers
-  (global-display-line-numbers-mode)
 
   ;; add more padding
   (add-to-list 'default-frame-alist '(internal-border-width . 12))
 #+end_src
+
+** SOME MORE OPTIONS
+Electric pair mode auto add delimiters like if I type "(" it'll automatically complete it to "()." Lol you probably knew that.
+#+begin_src emacs-lisp
+  (electric-pair-mode 1)
+#+end_src
+
+Example: ask "y or n" instead of "yes or no".
+#+begin_src emacs-lisp
+  (setopt use-short-answers t)
+#+end_src
+
+This is my contact information
+#+begin_src emacs-lisp
+(setq user-full-name       "Joseph Wu"
+      user-real-login-name "Joseph Wu"
+      user-login-name      "lycheejelly"
+      user-mail-address    "jrw.isfound@gmail.com")
+#+end_src
+
+I'm fine having line numbers everywhere.
+#+begin_src emacs-lisp
+  ;; add line numbers
+  (global-display-line-numbers-mode)
+ #+end_src

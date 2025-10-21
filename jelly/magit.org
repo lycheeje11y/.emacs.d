@@ -1,0 +1,13 @@
+#+TITLE: MAGIT 
+#+AUTHOR: Joey Wu
+#+DESCRIPTION: Here I install and set up Magit.
+#+STARTUP: showeverything
+#+OPTIONS: toc:2
+
+** INSTALL
+#+begin_src emacs-lisp
+  (use-package magit
+    :ensure t
+    :defer t)
+#+end_src
+
