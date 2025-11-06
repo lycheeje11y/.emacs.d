@@ -1,10 +1,8 @@
-#+TITLE: EMACS CONFIG
+#+TITLE: CORE CONFIG
 #+AUTHOR: Joey Wu
 #+DESCRIPTION: These are my reworked Emacs dots.
 #+STARTUP: showeverything
 #+OPTIONS: toc:2
-
-* STUFF
 
 ** PACKAGE.EL
 #+begin_src emacs-lisp
@@ -51,10 +49,18 @@ This is absolutely necessary (for me).
     :init
     ;; set up Evil behavior
     (setq evil-want-key nil)
+    (setq evil-want-keybinding nil)
     (setq evil-vsplit-window-right t)
     (setq evil-vsplit-window-left t)
     :config
     (evil-mode 1))
+
+  (use-package evil-collection
+    :after evil
+    :ensure t
+    :config
+    (evil-collection-init '(corfu compile dired magit)
+    ))
 #+end_src
 
 ** AESTHETICS

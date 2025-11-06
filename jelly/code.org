@@ -1,0 +1,17 @@
+#+TITLE: KEYBINDS
+#+AUTHOR: Joey Wu
+#+DESCRIPTION: coding stuff
+#+STARTUP: showeverything
+#+OPTIONS: toc:2
+
+
+** TREESITTER SETUP
+#+begin_src emacs-lisp
+(use-package treesit-auto
+  :ensure t
+    :custom
+  (treesit-auto-install 'prompt)
+  :config
+  (treesit-auto-add-to-auto-mode-alist 'all)
+  (global-treesit-auto-mode))
+#+end_src

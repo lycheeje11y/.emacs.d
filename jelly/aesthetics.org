@@ -1,0 +1,22 @@
+#+TITLE: CORE CONFIG
+#+AUTHOR: Joey Wu
+#+DESCRIPTION: These are my reworked Emacs dots.
+#+STARTUP: showeverything
+#+OPTIONS: toc:2
+
+Just add some icons rq
+#+begin_src emacs-lisp
+  (use-package all-the-icons
+    :ensure t
+    :if (display-graphic-p)
+  )
+
+    ;; so that it shows in the minibuffer
+  (use-package all-the-icons-completion
+    :ensure t
+    :after (marginalia all-the-icons)
+    :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
+    :init
+    (all-the-icons-completion-mode))
+
+#+end_src

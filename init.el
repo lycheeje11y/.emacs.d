@@ -2,7 +2,7 @@
 (setq user-emacs-directory (expand-file-name "~/.config/emacs/"))
 
 (defvar jelly/org-files
-      '("core.org" "binds.org" "magit.org")
+      '("core.org" "binds.org" "magit.org" "code.org" "completion.org" "aesthetics.org")
 			"This is a list of all my [config].org files.")
 
 (defvar jelly/org-files-directory (expand-file-name "jelly/" user-emacs-directory)

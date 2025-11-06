@@ -5,11 +5,7 @@
 #+OPTIONS: toc:2
 
 ** EVIL
-(sensible-defaults/use-all-settings)irst, let's import evil;
-#+begin_src emacs-lisp
- ;; (require 'evil)
-#+end_src
-Let's set up "jk" to enter normal mode for evil;
+First, let's set up "jk" to enter normal mode for evil;
 #+begin_src emacs-lisp
     ;; yay now i can use jk to re-enter normal mode
     (use-package evil-escape
@@ -21,7 +17,6 @@ Let's set up "jk" to enter normal mode for evil;
 #+end_src
 Yay! Now a leader key...I'll use bind-key for this.
 #+begin_src emacs-lisp
-
   (use-package bind-key :ensure t)
 
   ;; Create a prefix keymap for the leader
@@ -29,8 +24,8 @@ Yay! Now a leader key...I'll use bind-key for this.
     "Keymap for my leader key shortcuts.")
 
   ;; Bind SPC as the leader in normal and visual states
-  ;;(define-key evil-normal-state-map (kbd "SPC") jelly/leader-map)
-  ;;(define-key evil-visual-state-map (kbd "SPC") jelly/leader-map)
+  (define-key evil-normal-state-map (kbd "SPC") jelly/leader-map)
+  (define-key evil-visual-state-map (kbd "SPC") jelly/leader-map)
 
   (which-key-add-key-based-replacements
     "SPC" "leader")
