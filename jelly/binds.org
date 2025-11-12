@@ -7,13 +7,13 @@
 ** EVIL
 First, let's set up "jk" to enter normal mode for evil;
 #+begin_src emacs-lisp
-    ;; yay now i can use jk to re-enter normal mode
-    (use-package evil-escape
-      :ensure t
-      :init
-      (setq-default evil-escape-key-sequence "jk")
-      :config
-      (evil-escape-mode 1))
+  ;; yay now i can use jk to re-enter normal mode
+  (use-package evil-escape
+    :ensure t
+    :init
+    (setq-default evil-escape-key-sequence "jk")
+    :config
+    (evil-escape-mode 1))
 #+end_src
 Yay! Now a leader key...I'll use bind-key for this.
 #+begin_src emacs-lisp
@@ -36,6 +36,8 @@ Yay! Now a leader key...I'll use bind-key for this.
   (bind-key "s h" 'split-window-below jelly/leader-map) ;; SPC w s -> split below
   (bind-key "s v" 'split-window-right jelly/leader-map) ;; SPC w v -> split right
 
+  (bind-key "l" 'zone jelly/leader-map) ;; SPC w v -> split right
+
   ;; SENSIBLE DEFAULTS KEYBINDINGS
   (bind-key "g c" 'sensible-defaults/comment-or-uncomment-region-or-line jelly/leader-map)
 
@@ -44,4 +46,23 @@ Yay! Now a leader key...I'll use bind-key for this.
   (which-key-add-key-based-replacements
     "SPC b" "buffers"
     "SPC w" "windows")
+#+end_src
+
+** CRUX
+
+#+begin_src emacs-lisp
+  (use-package crux
+    :ensure t
+    :defer t
+    :hook (before-save-hook . crux-cleanup-buffer-or-region)
+    :bind
+    (:map jelly/leader-map
+  	("c l" . crux-eval-and-replace)
+  	("w s" . crux-transpose-windows)
+  	("k" . crux-kill-other-buffers)
+  	("c c" . crux-cleanup-buffer-or-region))
+    ("C-g" . crux-keyboard-quit-dwim)
+    ("M-o". crux-smart-open-line-above)
+    )
+
 #+end_src
